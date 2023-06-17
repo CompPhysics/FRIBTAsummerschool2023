@@ -6,8 +6,7 @@ DATE: FRIB-TA summer school June 26-28, 2023
 !split
 ===== What is this talk about? =====
 !bblock
-The main emphasis is to give you a short and pedestrian introduction to the whys and hows we can use (with several examples) machine learning methods
-in nuclear physics. And why this could (or should) be of interest. 
+Add material
 !eblock
 
 
