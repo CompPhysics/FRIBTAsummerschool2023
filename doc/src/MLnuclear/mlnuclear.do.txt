@@ -6,7 +6,10 @@ DATE: FRIB-TA summer school June 26-28, 2023
 !split
 ===== What is this talk about? =====
 !bblock
-Add material
+o Examples of applications of ML in nuclear physics
+o What are the basics and how can we get started? The nuclear masses as a data set
+  * Basic ingredients
+  * Nuclear masses, from standard least squares to deep learning
 !eblock
 
 
