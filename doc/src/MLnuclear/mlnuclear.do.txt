@@ -1,6 +1,6 @@
-TITLE: Artificial Intelligence and Machine Learning in Nuclear Physics
+TITLE: Practical Uncertainty Quantification and Emulator Development in Nuclear Physics
 AUTHOR: Morten Hjorth-Jensen at Department of Physics and Astronomy and FRIB/NSCL Laboratory, Michigan State University
-DATE: FRIB-TA summer school June 26-28, 2023
+DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 
 
 !split
