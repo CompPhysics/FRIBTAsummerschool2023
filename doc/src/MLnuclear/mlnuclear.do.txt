@@ -530,7 +530,7 @@ FIGURE: [figures/pointnucleondensity.png, width=700 frac=0.9]
 ===== The electron gas in three dimensions with $N=14$ electrons (Wigner-Seitz radius $r_s=2$ Ry) =====
 Jane Kim, Bryce Fore, Alessandro Lovato and MHJ, in preparation
 !bblock
-FIGURE: [figures/elgasnew.pdf, width=700 frac=0.9]
+FIGURE: [figures/elgasnew.png, width=700 frac=0.9]
 !eblock
 
 
