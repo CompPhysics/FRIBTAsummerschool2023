@@ -4,7 +4,7 @@ DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 
 
 !split
-===== What is this talk about? =====
+===== What is this lecture about? =====
 !bblock
 o Examples of applications of ML in nuclear physics
 o What are the basics ingredients and how can we get started? The nuclear masses as a data set and example through these lectures
