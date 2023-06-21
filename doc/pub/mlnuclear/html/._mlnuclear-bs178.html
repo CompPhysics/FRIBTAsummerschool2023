@@ -1,0 +1,928 @@
+<!--
+HTML file automatically generated from DocOnce source
+(https://github.com/doconce/doconce/)
+doconce format html mlnuclear.do.txt --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_panel --html_output=mlnuclear-bs --no_mako
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Practical Uncertainty Quantification and Emulator Development in Nuclear Physics">
+<title>Practical Uncertainty Quantification and Emulator Development in Nuclear Physics</title>
+<!-- Bootstrap style: bootstrap -->
+<!-- doconce format html mlnuclear.do.txt --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_panel --html_output=mlnuclear-bs --no_mako -->
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+<style type="text/css">
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+</style>
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('What is this lecture about?',
+               2,
+               None,
+               'what-is-this-lecture-about'),
+              ('Many folks to thank', 2, None, 'many-folks-to-thank'),
+              ('A simple perspective on the interface between ML and Physics',
+               2,
+               None,
+               'a-simple-perspective-on-the-interface-between-ml-and-physics'),
+              ('What is Machine Learning?',
+               2,
+               None,
+               'what-is-machine-learning'),
+              ('Types of Machine Learning',
+               2,
+               None,
+               'types-of-machine-learning'),
+              ('Essential elements of ML', 2, None, 'essential-elements-of-ml'),
+              ('An optimization/minimization problem',
+               2,
+               None,
+               'an-optimization-minimization-problem'),
+              ('A Frequentist approach to data analysis',
+               2,
+               None,
+               'a-frequentist-approach-to-data-analysis'),
+              ('What is a good model?', 2, None, 'what-is-a-good-model'),
+              ('What is a good model? Can we define it?',
+               2,
+               None,
+               'what-is-a-good-model-can-we-define-it'),
+              ('ML in Nuclear  Physics', 2, None, 'ml-in-nuclear-physics'),
+              ('AI/ML and some statements you may have heard (and what do they '
+               'mean?)',
+               2,
+               None,
+               'ai-ml-and-some-statements-you-may-have-heard-and-what-do-they-mean'),
+              ('Scientific Machine Learning',
+               2,
+               None,
+               'scientific-machine-learning'),
+              ('Machine Learning and Physics',
+               2,
+               None,
+               'machine-learning-and-physics'),
+              ('Lots of room for creativity',
+               2,
+               None,
+               'lots-of-room-for-creativity'),
+              ('Types of machine learning',
+               2,
+               None,
+               'types-of-machine-learning'),
+              ('Machine learning and nuclear theory: Why?',
+               2,
+               None,
+               'machine-learning-and-nuclear-theory-why'),
+              ('The plethora  of machine learning algorithms/methods',
+               2,
+               None,
+               'the-plethora-of-machine-learning-algorithms-methods'),
+              ('Examples of Machine Learning methods and applications in '
+               'nuclear physics',
+               2,
+               None,
+               'examples-of-machine-learning-methods-and-applications-in-nuclear-physics'),
+              ('Examples of Machine Learning methods and applications in '
+               'nuclear physics, continues',
+               2,
+               None,
+               'examples-of-machine-learning-methods-and-applications-in-nuclear-physics-continues'),
+              ('More examples', 2, None, 'more-examples'),
+              ('And more', 2, None, 'and-more'),
+              ('Selected references', 2, None, 'selected-references'),
+              ('What are the basic ingredients?',
+               2,
+               None,
+               'what-are-the-basic-ingredients'),
+              ('"Unsupervised learning in nuclear physics, Argon-46 by Solli, '
+               'Bazin, Kuchera, MHJ, '
+               'Strauss.":"https://www.sciencedirect.com/science/article/abs/pii/S0168900221004460?via%3Dihub"',
+               2,
+               None,
+               'unsupervised-learning-in-nuclear-physics-argon-46-by-solli-bazin-kuchera-mhj-strauss-https-www-sciencedirect-com-science-article-abs-pii-s0168900221004460-via-3dihub'),
+              ('Quantum Monte Carlo and deep learning',
+               2,
+               None,
+               'quantum-monte-carlo-and-deep-learning'),
+              ('Monte Carlo methods and Neural Networks',
+               2,
+               None,
+               'monte-carlo-methods-and-neural-networks'),
+              ('Deep learning neural networks, "Variational Monte Carlo '
+               'calculations of $A\\le 4$ nuclei with an artificial '
+               'neural-network correlator ansatz by Adams et '
+               'al.":"https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.022502"',
+               2,
+               None,
+               'deep-learning-neural-networks-variational-monte-carlo-calculations-of-a-le-4-nuclei-with-an-artificial-neural-network-correlator-ansatz-by-adams-et-al-https-journals-aps-org-prl-abstract-10-1103-physrevlett-127-022502'),
+              ('"Gnech et al, Variational Monte Carlo calculations of $A\\le '
+               '6$ nuclei Few Body Systems 63, '
+               '(2022)":"https://link.springer.com/article/10.1007/s00601-021-01706-0"',
+               2,
+               None,
+               'gnech-et-al-variational-monte-carlo-calculations-of-a-le-6-nuclei-few-body-systems-63-2022-https-link-springer-com-article-10-1007-s00601-021-01706-0'),
+              ('The electron gas in three dimensions with $N=14$ electrons '
+               '(Wigner-Seitz radius $r_s=2$ Ry)',
+               2,
+               None,
+               'the-electron-gas-in-three-dimensions-with-n-14-electrons-wigner-seitz-radius-r-s-2-ry'),
+              ('Neutron matter with $N=14$ neutron',
+               2,
+               None,
+               'neutron-matter-with-n-14-neutron'),
+              ('Electrons in a harmonic oscillator trap in two dimensions',
+               2,
+               None,
+               'electrons-in-a-harmonic-oscillator-trap-in-two-dimensions'),
+              ('Quantum dots and Boltzmann machines, onebody densities $N=6$, '
+               '$\\hbar\\omega=0.1$ a.u.',
+               2,
+               None,
+               'quantum-dots-and-boltzmann-machines-onebody-densities-n-6-hbar-omega-0-1-a-u'),
+              ('Onebody densities $N=30$, $\\hbar\\omega=1.0$ a.u.',
+               2,
+               None,
+               'onebody-densities-n-30-hbar-omega-1-0-a-u'),
+              ('Onebody densities $N=30$, $\\hbar\\omega=0.1$ a.u.',
+               2,
+               None,
+               'onebody-densities-n-30-hbar-omega-0-1-a-u'),
+              ('Extrapolations and model interpretability',
+               2,
+               None,
+               'extrapolations-and-model-interpretability'),
+              ('Physics based statistical learning and data analysis',
+               2,
+               None,
+               'physics-based-statistical-learning-and-data-analysis'),
+              ("Bayes' Theorem", 2, None, 'bayes-theorem'),
+              ('Folding and unfolding and response functions',
+               2,
+               None,
+               'folding-and-unfolding-and-response-functions'),
+              ('Quantified limits of the nuclear landscape',
+               2,
+               None,
+               'quantified-limits-of-the-nuclear-landscape'),
+              ('Constraining the equation of state for dense nuclear matter',
+               2,
+               None,
+               'constraining-the-equation-of-state-for-dense-nuclear-matter'),
+              ('Observations (or conclusions if you prefer)',
+               2,
+               None,
+               'observations-or-conclusions-if-you-prefer'),
+              ('Possible start to raise awareness about ML in our field',
+               2,
+               None,
+               'possible-start-to-raise-awareness-about-ml-in-our-field'),
+              ('To our real data: nuclear binding energies. Brief reminder on '
+               'masses and binding energies',
+               3,
+               None,
+               'to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies'),
+              ('Organizing our data', 3, None, 'organizing-our-data'),
+              ('Seeing the wood for the trees',
+               3,
+               None,
+               'seeing-the-wood-for-the-trees'),
+              ('And what about using neural networks?',
+               3,
+               None,
+               'and-what-about-using-neural-networks'),
+              ('Why Linear Regression (aka Ordinary Least Squares and family)',
+               2,
+               None,
+               'why-linear-regression-aka-ordinary-least-squares-and-family'),
+              ('Regression analysis, overarching aims',
+               2,
+               None,
+               'regression-analysis-overarching-aims'),
+              ('Regression analysis, overarching aims II',
+               2,
+               None,
+               'regression-analysis-overarching-aims-ii'),
+              ('Examples', 2, None, 'examples'),
+              ('General linear models', 2, None, 'general-linear-models'),
+              ('Rewriting the fitting procedure as a linear algebra problem',
+               2,
+               None,
+               'rewriting-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Rewriting the fitting procedure as a linear algebra problem, '
+               'more details',
+               2,
+               None,
+               'rewriting-the-fitting-procedure-as-a-linear-algebra-problem-more-details'),
+              ('Generalizing the fitting procedure as a linear algebra problem',
+               2,
+               None,
+               'generalizing-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Generalizing the fitting procedure as a linear algebra problem',
+               2,
+               None,
+               'generalizing-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Optimizing our parameters',
+               2,
+               None,
+               'optimizing-our-parameters'),
+              ('Our model for the nuclear binding energies',
+               2,
+               None,
+               'our-model-for-the-nuclear-binding-energies'),
+              ('Optimizing our parameters, more details',
+               2,
+               None,
+               'optimizing-our-parameters-more-details'),
+              ('Interpretations and optimizing our parameters',
+               2,
+               None,
+               'interpretations-and-optimizing-our-parameters'),
+              ('Interpretations and optimizing our parameters',
+               2,
+               None,
+               'interpretations-and-optimizing-our-parameters'),
+              ('Some useful matrix and vector expressions',
+               2,
+               None,
+               'some-useful-matrix-and-vector-expressions'),
+              ('Interpretations and optimizing our parameters',
+               2,
+               None,
+               'interpretations-and-optimizing-our-parameters'),
+              ('Own code for Ordinary Least Squares',
+               2,
+               None,
+               'own-code-for-ordinary-least-squares'),
+              ('Adding error analysis and training set up',
+               2,
+               None,
+               'adding-error-analysis-and-training-set-up'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('Why Linear Regression (aka Ordinary Least Squares and family), '
+               'repeat from last week',
+               2,
+               None,
+               'why-linear-regression-aka-ordinary-least-squares-and-family-repeat-from-last-week'),
+              ('Regression analysis, overarching aims',
+               2,
+               None,
+               'regression-analysis-overarching-aims'),
+              ('Regression analysis, overarching aims II',
+               2,
+               None,
+               'regression-analysis-overarching-aims-ii'),
+              ('Examples', 2, None, 'examples'),
+              ('General linear models', 2, None, 'general-linear-models'),
+              ('Rewriting the fitting procedure as a linear algebra problem',
+               2,
+               None,
+               'rewriting-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Rewriting the fitting procedure as a linear algebra problem, '
+               'more details',
+               2,
+               None,
+               'rewriting-the-fitting-procedure-as-a-linear-algebra-problem-more-details'),
+              ('Generalizing the fitting procedure as a linear algebra problem',
+               2,
+               None,
+               'generalizing-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Generalizing the fitting procedure as a linear algebra problem',
+               2,
+               None,
+               'generalizing-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Optimizing our parameters',
+               2,
+               None,
+               'optimizing-our-parameters'),
+              ('Our model for the nuclear binding energies',
+               2,
+               None,
+               'our-model-for-the-nuclear-binding-energies'),
+              ('Optimizing our parameters, more details',
+               2,
+               None,
+               'optimizing-our-parameters-more-details'),
+              ('Interpretations and optimizing our parameters',
+               2,
+               None,
+               'interpretations-and-optimizing-our-parameters'),
+              ('Interpretations and optimizing our parameters',
+               2,
+               None,
+               'interpretations-and-optimizing-our-parameters'),
+              ('Some useful matrix and vector expressions',
+               2,
+               None,
+               'some-useful-matrix-and-vector-expressions'),
+              ('Meet the Hessian Matrix', 2, None, 'meet-the-hessian-matrix'),
+              ('Interpretations and optimizing our parameters',
+               2,
+               None,
+               'interpretations-and-optimizing-our-parameters'),
+              ('Own code for Ordinary Least Squares',
+               2,
+               None,
+               'own-code-for-ordinary-least-squares'),
+              ('Adding error analysis and training set up',
+               2,
+               None,
+               'adding-error-analysis-and-training-set-up'),
+              ('Splitting our Data in Training and Test data',
+               2,
+               None,
+               'splitting-our-data-in-training-and-test-data'),
+              ('Examples', 2, None, 'examples'),
+              ('Making your own test-train splitting',
+               2,
+               None,
+               'making-your-own-test-train-splitting'),
+              ('The Boston housing data example',
+               2,
+               None,
+               'the-boston-housing-data-example'),
+              ('Housing data, the code', 2, None, 'housing-data-the-code'),
+              ('Reducing the number of degrees of freedom, overarching view',
+               2,
+               None,
+               'reducing-the-number-of-degrees-of-freedom-overarching-view'),
+              ('Preprocessing our data', 2, None, 'preprocessing-our-data'),
+              ('Functionality in Scikit-Learn',
+               2,
+               None,
+               'functionality-in-scikit-learn'),
+              ('More preprocessing', 2, None, 'more-preprocessing'),
+              ('Frequently used scaling functions',
+               2,
+               None,
+               'frequently-used-scaling-functions'),
+              ('Example of own Standard scaling',
+               2,
+               None,
+               'example-of-own-standard-scaling'),
+              ('Min-Max Scaling', 2, None, 'min-max-scaling'),
+              ('Testing the Means Squared Error as function of Complexity',
+               2,
+               None,
+               'testing-the-means-squared-error-as-function-of-complexity'),
+              ('More preprocessing examples, Franke function and regression',
+               2,
+               None,
+               'more-preprocessing-examples-franke-function-and-regression'),
+              ('Mathematical Interpretation of Ordinary Least Squares',
+               2,
+               None,
+               'mathematical-interpretation-of-ordinary-least-squares'),
+              ('Residual Error', 2, None, 'residual-error'),
+              ('Simple case', 2, None, 'simple-case'),
+              ('The singular value decomposition',
+               2,
+               None,
+               'the-singular-value-decomposition'),
+              ('Linear Regression Problems',
+               2,
+               None,
+               'linear-regression-problems'),
+              ('Fixing the singularity', 2, None, 'fixing-the-singularity'),
+              ('Basic math of the SVD', 2, None, 'basic-math-of-the-svd'),
+              ('The SVD, a Fantastic Algorithm',
+               2,
+               None,
+               'the-svd-a-fantastic-algorithm'),
+              ('Economy-size SVD', 2, None, 'economy-size-svd'),
+              ('Codes for the SVD', 2, None, 'codes-for-the-svd'),
+              ('Note about SVD Calculations',
+               2,
+               None,
+               'note-about-svd-calculations'),
+              ('Mathematics of the SVD and implications',
+               2,
+               None,
+               'mathematics-of-the-svd-and-implications'),
+              ('Example Matrix', 2, None, 'example-matrix'),
+              ('Setting up the Matrix to be inverted',
+               2,
+               None,
+               'setting-up-the-matrix-to-be-inverted'),
+              ('Further properties (important for our analyses later)',
+               2,
+               None,
+               'further-properties-important-for-our-analyses-later'),
+              ('Meet the Covariance Matrix',
+               2,
+               None,
+               'meet-the-covariance-matrix'),
+              ('Introducing the Covariance and Correlation functions',
+               2,
+               None,
+               'introducing-the-covariance-and-correlation-functions'),
+              ('Covariance and Correlation Matrix',
+               2,
+               None,
+               'covariance-and-correlation-matrix'),
+              ('Correlation Function and Design/Feature Matrix',
+               2,
+               None,
+               'correlation-function-and-design-feature-matrix'),
+              ('Covariance Matrix Examples',
+               2,
+               None,
+               'covariance-matrix-examples'),
+              ('Correlation Matrix', 2, None, 'correlation-matrix'),
+              ('Correlation Matrix with Pandas',
+               2,
+               None,
+               'correlation-matrix-with-pandas'),
+              ('Correlation Matrix with Pandas and the Franke function',
+               2,
+               None,
+               'correlation-matrix-with-pandas-and-the-franke-function'),
+              ('Rewriting the Covariance and/or Correlation Matrix',
+               2,
+               None,
+               'rewriting-the-covariance-and-or-correlation-matrix'),
+              ('Linking with the SVD', 2, None, 'linking-with-the-svd'),
+              ('What does it mean?', 2, None, 'what-does-it-mean'),
+              ('And finally  $\\boldsymbol{X}\\boldsymbol{X}^T$',
+               2,
+               None,
+               'and-finally-boldsymbol-x-boldsymbol-x-t'),
+              ('Ridge and LASSO Regression',
+               2,
+               None,
+               'ridge-and-lasso-regression'),
+              ('Deriving the  Ridge Regression Equations',
+               2,
+               None,
+               'deriving-the-ridge-regression-equations'),
+              ('Interpreting the Ridge results',
+               2,
+               None,
+               'interpreting-the-ridge-results'),
+              ('More interpretations', 2, None, 'more-interpretations'),
+              ('Deriving the  Lasso Regression Equations',
+               2,
+               None,
+               'deriving-the-lasso-regression-equations'),
+              ('Exercises for week 35', 2, None, 'exercises-for-week-35'),
+              ('Exercise 1: Setting up various Python environments',
+               2,
+               None,
+               'exercise-1-setting-up-various-python-environments'),
+              ('Linear Regression and  the SVD',
+               2,
+               None,
+               'linear-regression-and-the-svd'),
+              ('What does it mean?', 2, None, 'what-does-it-mean'),
+              ('And finally  $\\boldsymbol{X}\\boldsymbol{X}^T$',
+               2,
+               None,
+               'and-finally-boldsymbol-x-boldsymbol-x-t'),
+              ('Code for SVD and Inversion of Matrices',
+               2,
+               None,
+               'code-for-svd-and-inversion-of-matrices'),
+              ('Inverse of Rectangular Matrix',
+               2,
+               None,
+               'inverse-of-rectangular-matrix'),
+              ('Ridge and LASSO Regression',
+               2,
+               None,
+               'ridge-and-lasso-regression'),
+              ('From OLS to Ridge and Lasso',
+               2,
+               None,
+               'from-ols-to-ridge-and-lasso'),
+              ('Deriving the  Ridge Regression Equations',
+               2,
+               None,
+               'deriving-the-ridge-regression-equations'),
+              ('Note on Scikit-Learn', 2, None, 'note-on-scikit-learn'),
+              ('Comparison with OLS', 2, None, 'comparison-with-ols'),
+              ('SVD analysis', 2, None, 'svd-analysis'),
+              ('Interpreting the Ridge results',
+               2,
+               None,
+               'interpreting-the-ridge-results'),
+              ('More interpretations', 2, None, 'more-interpretations'),
+              ('Deriving the  Lasso Regression Equations',
+               2,
+               None,
+               'deriving-the-lasso-regression-equations'),
+              ('Simple example to illustrate Ordinary Least Squares, Ridge and '
+               'Lasso Regression',
+               2,
+               None,
+               'simple-example-to-illustrate-ordinary-least-squares-ridge-and-lasso-regression'),
+              ('Ridge Regression', 2, None, 'ridge-regression'),
+              ('Lasso Regression', 2, None, 'lasso-regression'),
+              ('Yet another Example', 2, None, 'yet-another-example'),
+              ('The OLS case', 2, None, 'the-ols-case'),
+              ('The Ridge case', 2, None, 'the-ridge-case'),
+              ('Writing the Cost Function',
+               2,
+               None,
+               'writing-the-cost-function'),
+              ('Lasso case', 2, None, 'lasso-case'),
+              ('The first Case', 2, None, 'the-first-case'),
+              ('Simple code for solving the above problem',
+               2,
+               None,
+               'simple-code-for-solving-the-above-problem'),
+              ('With Lasso Regression', 2, None, 'with-lasso-regression'),
+              ('Another Example, now with a polynomial fit',
+               2,
+               None,
+               'another-example-now-with-a-polynomial-fit'),
+              ('To think about, first part',
+               2,
+               None,
+               'to-think-about-first-part'),
+              ('More thinking', 2, None, 'more-thinking'),
+              ('Still thinking', 2, None, 'still-thinking'),
+              ('What does centering (subtracting the mean values) mean '
+               'mathematically?',
+               2,
+               None,
+               'what-does-centering-subtracting-the-mean-values-mean-mathematically'),
+              ('Further Manipulations', 2, None, 'further-manipulations'),
+              ('Wrapping it up', 2, None, 'wrapping-it-up'),
+              ('Linear Regression code, Intercept handling first',
+               2,
+               None,
+               'linear-regression-code-intercept-handling-first'),
+              ('Code Examples', 2, None, 'code-examples'),
+              ('Taking out the mean', 2, None, 'taking-out-the-mean'),
+              ('Friday September 9', 2, None, 'friday-september-9'),
+              ('Linking the regression analysis with a statistical '
+               'interpretation',
+               2,
+               None,
+               'linking-the-regression-analysis-with-a-statistical-interpretation'),
+              ('Assumptions made', 2, None, 'assumptions-made'),
+              ('Expectation value and variance',
+               2,
+               None,
+               'expectation-value-and-variance'),
+              ('Expectation value and variance for $\\boldsymbol{\\beta}$',
+               2,
+               None,
+               'expectation-value-and-variance-for-boldsymbol-beta'),
+              ('Deriving OLS from a probability distribution',
+               2,
+               None,
+               'deriving-ols-from-a-probability-distribution'),
+              ('Independent and Identically Distrubuted (iid)',
+               2,
+               None,
+               'independent-and-identically-distrubuted-iid'),
+              ('Maximum Likelihood Estimation (MLE)',
+               2,
+               None,
+               'maximum-likelihood-estimation-mle'),
+              ('A new Cost Function', 2, None, 'a-new-cost-function'),
+              ("More basic Statistics and Bayes' theorem",
+               2,
+               None,
+               'more-basic-statistics-and-bayes-theorem'),
+              ('Marginal Probability', 2, None, 'marginal-probability'),
+              ('Conditional  Probability', 2, None, 'conditional-probability'),
+              ("Bayes' Theorem", 2, None, 'bayes-theorem'),
+              ("Interpretations of Bayes' Theorem",
+               2,
+               None,
+               'interpretations-of-bayes-theorem'),
+              ("Example of Usage of Bayes' theorem",
+               2,
+               None,
+               'example-of-usage-of-bayes-theorem'),
+              ('Doing it correctly', 2, None, 'doing-it-correctly'),
+              ("Bayes' Theorem and Ridge and Lasso Regression",
+               2,
+               None,
+               'bayes-theorem-and-ridge-and-lasso-regression'),
+              ('Test Function for what happens with OLS, Ridge and Lasso',
+               2,
+               None,
+               'test-function-for-what-happens-with-ols-ridge-and-lasso'),
+              ("Invoking Bayes' theorem", 2, None, 'invoking-bayes-theorem'),
+              ('Ridge and Bayes', 2, None, 'ridge-and-bayes'),
+              ('Lasso and Bayes', 2, None, 'lasso-and-bayes')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="nuclear-bs.html">Practical Uncertainty Quantification and Emulator Development in Nuclear Physics</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs001.html#what-is-this-lecture-about" style="font-size: 80%;"><b>What is this lecture about?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs002.html#many-folks-to-thank" style="font-size: 80%;"><b>Many folks to thank</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs003.html#a-simple-perspective-on-the-interface-between-ml-and-physics" style="font-size: 80%;"><b>A simple perspective on the interface between ML and Physics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs004.html#what-is-machine-learning" style="font-size: 80%;"><b>What is Machine Learning?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs015.html#types-of-machine-learning" style="font-size: 80%;"><b>Types of Machine Learning</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs006.html#essential-elements-of-ml" style="font-size: 80%;"><b>Essential elements of ML</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs007.html#an-optimization-minimization-problem" style="font-size: 80%;"><b>An optimization/minimization problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs008.html#a-frequentist-approach-to-data-analysis" style="font-size: 80%;"><b>A Frequentist approach to data analysis</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs009.html#what-is-a-good-model" style="font-size: 80%;"><b>What is a good model?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs010.html#what-is-a-good-model-can-we-define-it" style="font-size: 80%;"><b>What is a good model? Can we define it?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs011.html#ml-in-nuclear-physics" style="font-size: 80%;"><b>ML in Nuclear  Physics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs012.html#ai-ml-and-some-statements-you-may-have-heard-and-what-do-they-mean" style="font-size: 80%;"><b>AI/ML and some statements you may have heard (and what do they mean?)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs012.html#scientific-machine-learning" style="font-size: 80%;"><b>Scientific Machine Learning</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs013.html#machine-learning-and-physics" style="font-size: 80%;"><b>Machine Learning and Physics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs014.html#lots-of-room-for-creativity" style="font-size: 80%;"><b>Lots of room for creativity</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs015.html#types-of-machine-learning" style="font-size: 80%;"><b>Types of machine learning</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs016.html#machine-learning-and-nuclear-theory-why" style="font-size: 80%;"><b>Machine learning and nuclear theory: Why?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs017.html#the-plethora-of-machine-learning-algorithms-methods" style="font-size: 80%;"><b>The plethora  of machine learning algorithms/methods</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs018.html#examples-of-machine-learning-methods-and-applications-in-nuclear-physics" style="font-size: 80%;"><b>Examples of Machine Learning methods and applications in nuclear physics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs019.html#examples-of-machine-learning-methods-and-applications-in-nuclear-physics-continues" style="font-size: 80%;"><b>Examples of Machine Learning methods and applications in nuclear physics, continues</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs020.html#more-examples" style="font-size: 80%;"><b>More examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs021.html#and-more" style="font-size: 80%;"><b>And more</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs022.html#selected-references" style="font-size: 80%;"><b>Selected references</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs023.html#what-are-the-basic-ingredients" style="font-size: 80%;"><b>What are the basic ingredients?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs024.html#unsupervised-learning-in-nuclear-physics-argon-46-by-solli-bazin-kuchera-mhj-strauss-https-www-sciencedirect-com-science-article-abs-pii-s0168900221004460-via-3dihub" style="font-size: 80%;"><b>"Unsupervised learning in nuclear physics, Argon-46 by Solli, Bazin, Kuchera, MHJ, Strauss.":"https://www.sciencedirect.com/science/article/abs/pii/S0168900221004460?via%3Dihub"</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs025.html#quantum-monte-carlo-and-deep-learning" style="font-size: 80%;"><b>Quantum Monte Carlo and deep learning</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs026.html#monte-carlo-methods-and-neural-networks" style="font-size: 80%;"><b>Monte Carlo methods and Neural Networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs027.html#deep-learning-neural-networks-variational-monte-carlo-calculations-of-a-le-4-nuclei-with-an-artificial-neural-network-correlator-ansatz-by-adams-et-al-https-journals-aps-org-prl-abstract-10-1103-physrevlett-127-022502" style="font-size: 80%;"><b>Deep learning neural networks, "Variational Monte Carlo calculations of \( A\le 4 \) nuclei with an artificial neural-network correlator ansatz by Adams et al.":"https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.022502"</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs028.html#gnech-et-al-variational-monte-carlo-calculations-of-a-le-6-nuclei-few-body-systems-63-2022-https-link-springer-com-article-10-1007-s00601-021-01706-0" style="font-size: 80%;"><b>"Gnech et al, Variational Monte Carlo calculations of \( A\le 6 \) nuclei Few Body Systems 63, (2022)":"https://link.springer.com/article/10.1007/s00601-021-01706-0"</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs029.html#the-electron-gas-in-three-dimensions-with-n-14-electrons-wigner-seitz-radius-r-s-2-ry" style="font-size: 80%;"><b>The electron gas in three dimensions with \( N=14 \) electrons (Wigner-Seitz radius \( r_s=2 \) Ry)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs030.html#neutron-matter-with-n-14-neutron" style="font-size: 80%;"><b>Neutron matter with \( N=14 \) neutron</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs031.html#electrons-in-a-harmonic-oscillator-trap-in-two-dimensions" style="font-size: 80%;"><b>Electrons in a harmonic oscillator trap in two dimensions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs032.html#quantum-dots-and-boltzmann-machines-onebody-densities-n-6-hbar-omega-0-1-a-u" style="font-size: 80%;"><b>Quantum dots and Boltzmann machines, onebody densities \( N=6 \), \( \hbar\omega=0.1 \) a.u.</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs033.html#onebody-densities-n-30-hbar-omega-1-0-a-u" style="font-size: 80%;"><b>Onebody densities \( N=30 \), \( \hbar\omega=1.0 \) a.u.</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs034.html#onebody-densities-n-30-hbar-omega-0-1-a-u" style="font-size: 80%;"><b>Onebody densities \( N=30 \), \( \hbar\omega=0.1 \) a.u.</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs035.html#extrapolations-and-model-interpretability" style="font-size: 80%;"><b>Extrapolations and model interpretability</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs036.html#physics-based-statistical-learning-and-data-analysis" style="font-size: 80%;"><b>Physics based statistical learning and data analysis</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs180.html#bayes-theorem" style="font-size: 80%;"><b>Bayes' Theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs038.html#folding-and-unfolding-and-response-functions" style="font-size: 80%;"><b>Folding and unfolding and response functions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs039.html#quantified-limits-of-the-nuclear-landscape" style="font-size: 80%;"><b>Quantified limits of the nuclear landscape</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs040.html#constraining-the-equation-of-state-for-dense-nuclear-matter" style="font-size: 80%;"><b>Constraining the equation of state for dense nuclear matter</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs041.html#observations-or-conclusions-if-you-prefer" style="font-size: 80%;"><b>Observations (or conclusions if you prefer)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#possible-start-to-raise-awareness-about-ml-in-our-field" style="font-size: 80%;"><b>Possible start to raise awareness about ML in our field</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;To our real data: nuclear binding energies. Brief reminder on masses and binding energies</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#organizing-our-data" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organizing our data</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#seeing-the-wood-for-the-trees" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Seeing the wood for the trees</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#and-what-about-using-neural-networks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;And what about using neural networks?</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs043.html#why-linear-regression-aka-ordinary-least-squares-and-family" style="font-size: 80%;"><b>Why Linear Regression (aka Ordinary Least Squares and family)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs068.html#regression-analysis-overarching-aims" style="font-size: 80%;"><b>Regression analysis, overarching aims</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs069.html#regression-analysis-overarching-aims-ii" style="font-size: 80%;"><b>Regression analysis, overarching aims II</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs087.html#examples" style="font-size: 80%;"><b>Examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs071.html#general-linear-models" style="font-size: 80%;"><b>General linear models</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs072.html#rewriting-the-fitting-procedure-as-a-linear-algebra-problem" style="font-size: 80%;"><b>Rewriting the fitting procedure as a linear algebra problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs073.html#rewriting-the-fitting-procedure-as-a-linear-algebra-problem-more-details" style="font-size: 80%;"><b>Rewriting the fitting procedure as a linear algebra problem, more details</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs075.html#generalizing-the-fitting-procedure-as-a-linear-algebra-problem" style="font-size: 80%;"><b>Generalizing the fitting procedure as a linear algebra problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs075.html#generalizing-the-fitting-procedure-as-a-linear-algebra-problem" style="font-size: 80%;"><b>Generalizing the fitting procedure as a linear algebra problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs076.html#optimizing-our-parameters" style="font-size: 80%;"><b>Optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs077.html#our-model-for-the-nuclear-binding-energies" style="font-size: 80%;"><b>Our model for the nuclear binding energies</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs078.html#optimizing-our-parameters-more-details" style="font-size: 80%;"><b>Optimizing our parameters, more details</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs083.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;"><b>Interpretations and optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs083.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;"><b>Interpretations and optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs081.html#some-useful-matrix-and-vector-expressions" style="font-size: 80%;"><b>Some useful matrix and vector expressions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs083.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;"><b>Interpretations and optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs084.html#own-code-for-ordinary-least-squares" style="font-size: 80%;"><b>Own code for Ordinary Least Squares</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs085.html#adding-error-analysis-and-training-set-up" style="font-size: 80%;"><b>Adding error analysis and training set up</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs066.html#the-chi-2-function" style="font-size: 80%;"><b>The \( \chi^2 \) function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs066.html#the-chi-2-function" style="font-size: 80%;"><b>The \( \chi^2 \) function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs066.html#the-chi-2-function" style="font-size: 80%;"><b>The \( \chi^2 \) function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs066.html#the-chi-2-function" style="font-size: 80%;"><b>The \( \chi^2 \) function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs066.html#the-chi-2-function" style="font-size: 80%;"><b>The \( \chi^2 \) function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs066.html#the-chi-2-function" style="font-size: 80%;"><b>The \( \chi^2 \) function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs067.html#why-linear-regression-aka-ordinary-least-squares-and-family-repeat-from-last-week" style="font-size: 80%;"><b>Why Linear Regression (aka Ordinary Least Squares and family), repeat from last week</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs068.html#regression-analysis-overarching-aims" style="font-size: 80%;"><b>Regression analysis, overarching aims</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs069.html#regression-analysis-overarching-aims-ii" style="font-size: 80%;"><b>Regression analysis, overarching aims II</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs087.html#examples" style="font-size: 80%;"><b>Examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs071.html#general-linear-models" style="font-size: 80%;"><b>General linear models</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs072.html#rewriting-the-fitting-procedure-as-a-linear-algebra-problem" style="font-size: 80%;"><b>Rewriting the fitting procedure as a linear algebra problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs073.html#rewriting-the-fitting-procedure-as-a-linear-algebra-problem-more-details" style="font-size: 80%;"><b>Rewriting the fitting procedure as a linear algebra problem, more details</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs075.html#generalizing-the-fitting-procedure-as-a-linear-algebra-problem" style="font-size: 80%;"><b>Generalizing the fitting procedure as a linear algebra problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs075.html#generalizing-the-fitting-procedure-as-a-linear-algebra-problem" style="font-size: 80%;"><b>Generalizing the fitting procedure as a linear algebra problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs076.html#optimizing-our-parameters" style="font-size: 80%;"><b>Optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs077.html#our-model-for-the-nuclear-binding-energies" style="font-size: 80%;"><b>Our model for the nuclear binding energies</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs078.html#optimizing-our-parameters-more-details" style="font-size: 80%;"><b>Optimizing our parameters, more details</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs083.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;"><b>Interpretations and optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs083.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;"><b>Interpretations and optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs081.html#some-useful-matrix-and-vector-expressions" style="font-size: 80%;"><b>Some useful matrix and vector expressions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs082.html#meet-the-hessian-matrix" style="font-size: 80%;"><b>Meet the Hessian Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs083.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;"><b>Interpretations and optimizing our parameters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs084.html#own-code-for-ordinary-least-squares" style="font-size: 80%;"><b>Own code for Ordinary Least Squares</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs085.html#adding-error-analysis-and-training-set-up" style="font-size: 80%;"><b>Adding error analysis and training set up</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs086.html#splitting-our-data-in-training-and-test-data" style="font-size: 80%;"><b>Splitting our Data in Training and Test data</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs087.html#examples" style="font-size: 80%;"><b>Examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs088.html#making-your-own-test-train-splitting" style="font-size: 80%;"><b>Making your own test-train splitting</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs089.html#the-boston-housing-data-example" style="font-size: 80%;"><b>The Boston housing data example</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs090.html#housing-data-the-code" style="font-size: 80%;"><b>Housing data, the code</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs091.html#reducing-the-number-of-degrees-of-freedom-overarching-view" style="font-size: 80%;"><b>Reducing the number of degrees of freedom, overarching view</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs092.html#preprocessing-our-data" style="font-size: 80%;"><b>Preprocessing our data</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs093.html#functionality-in-scikit-learn" style="font-size: 80%;"><b>Functionality in Scikit-Learn</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs094.html#more-preprocessing" style="font-size: 80%;"><b>More preprocessing</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs095.html#frequently-used-scaling-functions" style="font-size: 80%;"><b>Frequently used scaling functions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs096.html#example-of-own-standard-scaling" style="font-size: 80%;"><b>Example of own Standard scaling</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs097.html#min-max-scaling" style="font-size: 80%;"><b>Min-Max Scaling</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs098.html#testing-the-means-squared-error-as-function-of-complexity" style="font-size: 80%;"><b>Testing the Means Squared Error as function of Complexity</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs099.html#more-preprocessing-examples-franke-function-and-regression" style="font-size: 80%;"><b>More preprocessing examples, Franke function and regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs100.html#mathematical-interpretation-of-ordinary-least-squares" style="font-size: 80%;"><b>Mathematical Interpretation of Ordinary Least Squares</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs101.html#residual-error" style="font-size: 80%;"><b>Residual Error</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs102.html#simple-case" style="font-size: 80%;"><b>Simple case</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs103.html#the-singular-value-decomposition" style="font-size: 80%;"><b>The singular value decomposition</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs104.html#linear-regression-problems" style="font-size: 80%;"><b>Linear Regression Problems</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs105.html#fixing-the-singularity" style="font-size: 80%;"><b>Fixing the singularity</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs106.html#basic-math-of-the-svd" style="font-size: 80%;"><b>Basic math of the SVD</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs107.html#the-svd-a-fantastic-algorithm" style="font-size: 80%;"><b>The SVD, a Fantastic Algorithm</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs108.html#economy-size-svd" style="font-size: 80%;"><b>Economy-size SVD</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs109.html#codes-for-the-svd" style="font-size: 80%;"><b>Codes for the SVD</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs110.html#note-about-svd-calculations" style="font-size: 80%;"><b>Note about SVD Calculations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs111.html#mathematics-of-the-svd-and-implications" style="font-size: 80%;"><b>Mathematics of the SVD and implications</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs112.html#example-matrix" style="font-size: 80%;"><b>Example Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs113.html#setting-up-the-matrix-to-be-inverted" style="font-size: 80%;"><b>Setting up the Matrix to be inverted</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs114.html#further-properties-important-for-our-analyses-later" style="font-size: 80%;"><b>Further properties (important for our analyses later)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs115.html#meet-the-covariance-matrix" style="font-size: 80%;"><b>Meet the Covariance Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs116.html#introducing-the-covariance-and-correlation-functions" style="font-size: 80%;"><b>Introducing the Covariance and Correlation functions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs117.html#covariance-and-correlation-matrix" style="font-size: 80%;"><b>Covariance and Correlation Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs118.html#correlation-function-and-design-feature-matrix" style="font-size: 80%;"><b>Correlation Function and Design/Feature Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs119.html#covariance-matrix-examples" style="font-size: 80%;"><b>Covariance Matrix Examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs120.html#correlation-matrix" style="font-size: 80%;"><b>Correlation Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs121.html#correlation-matrix-with-pandas" style="font-size: 80%;"><b>Correlation Matrix with Pandas</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs122.html#correlation-matrix-with-pandas-and-the-franke-function" style="font-size: 80%;"><b>Correlation Matrix with Pandas and the Franke function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs123.html#rewriting-the-covariance-and-or-correlation-matrix" style="font-size: 80%;"><b>Rewriting the Covariance and/or Correlation Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs124.html#linking-with-the-svd" style="font-size: 80%;"><b>Linking with the SVD</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs134.html#what-does-it-mean" style="font-size: 80%;"><b>What does it mean?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs135.html#and-finally-boldsymbol-x-boldsymbol-x-t" style="font-size: 80%;"><b>And finally  \( \boldsymbol{X}\boldsymbol{X}^T \)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs138.html#ridge-and-lasso-regression" style="font-size: 80%;"><b>Ridge and LASSO Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs140.html#deriving-the-ridge-regression-equations" style="font-size: 80%;"><b>Deriving the  Ridge Regression Equations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs144.html#interpreting-the-ridge-results" style="font-size: 80%;"><b>Interpreting the Ridge results</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs145.html#more-interpretations" style="font-size: 80%;"><b>More interpretations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs146.html#deriving-the-lasso-regression-equations" style="font-size: 80%;"><b>Deriving the  Lasso Regression Equations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs132.html#exercises-for-week-35" style="font-size: 80%;"><b>Exercises for week 35</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs132.html#exercise-1-setting-up-various-python-environments" style="font-size: 80%;"><b>Exercise 1: Setting up various Python environments</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs133.html#linear-regression-and-the-svd" style="font-size: 80%;"><b>Linear Regression and  the SVD</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs134.html#what-does-it-mean" style="font-size: 80%;"><b>What does it mean?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs135.html#and-finally-boldsymbol-x-boldsymbol-x-t" style="font-size: 80%;"><b>And finally  \( \boldsymbol{X}\boldsymbol{X}^T \)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs136.html#code-for-svd-and-inversion-of-matrices" style="font-size: 80%;"><b>Code for SVD and Inversion of Matrices</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs137.html#inverse-of-rectangular-matrix" style="font-size: 80%;"><b>Inverse of Rectangular Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs138.html#ridge-and-lasso-regression" style="font-size: 80%;"><b>Ridge and LASSO Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs139.html#from-ols-to-ridge-and-lasso" style="font-size: 80%;"><b>From OLS to Ridge and Lasso</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs140.html#deriving-the-ridge-regression-equations" style="font-size: 80%;"><b>Deriving the  Ridge Regression Equations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs141.html#note-on-scikit-learn" style="font-size: 80%;"><b>Note on Scikit-Learn</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs142.html#comparison-with-ols" style="font-size: 80%;"><b>Comparison with OLS</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs143.html#svd-analysis" style="font-size: 80%;"><b>SVD analysis</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs144.html#interpreting-the-ridge-results" style="font-size: 80%;"><b>Interpreting the Ridge results</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs145.html#more-interpretations" style="font-size: 80%;"><b>More interpretations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs146.html#deriving-the-lasso-regression-equations" style="font-size: 80%;"><b>Deriving the  Lasso Regression Equations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs147.html#simple-example-to-illustrate-ordinary-least-squares-ridge-and-lasso-regression" style="font-size: 80%;"><b>Simple example to illustrate Ordinary Least Squares, Ridge and Lasso Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs148.html#ridge-regression" style="font-size: 80%;"><b>Ridge Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs149.html#lasso-regression" style="font-size: 80%;"><b>Lasso Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs150.html#yet-another-example" style="font-size: 80%;"><b>Yet another Example</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs151.html#the-ols-case" style="font-size: 80%;"><b>The OLS case</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs152.html#the-ridge-case" style="font-size: 80%;"><b>The Ridge case</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs153.html#writing-the-cost-function" style="font-size: 80%;"><b>Writing the Cost Function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs154.html#lasso-case" style="font-size: 80%;"><b>Lasso case</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs155.html#the-first-case" style="font-size: 80%;"><b>The first Case</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs156.html#simple-code-for-solving-the-above-problem" style="font-size: 80%;"><b>Simple code for solving the above problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs157.html#with-lasso-regression" style="font-size: 80%;"><b>With Lasso Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs158.html#another-example-now-with-a-polynomial-fit" style="font-size: 80%;"><b>Another Example, now with a polynomial fit</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs159.html#to-think-about-first-part" style="font-size: 80%;"><b>To think about, first part</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs160.html#more-thinking" style="font-size: 80%;"><b>More thinking</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs161.html#still-thinking" style="font-size: 80%;"><b>Still thinking</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs162.html#what-does-centering-subtracting-the-mean-values-mean-mathematically" style="font-size: 80%;"><b>What does centering (subtracting the mean values) mean mathematically?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs163.html#further-manipulations" style="font-size: 80%;"><b>Further Manipulations</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs164.html#wrapping-it-up" style="font-size: 80%;"><b>Wrapping it up</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs165.html#linear-regression-code-intercept-handling-first" style="font-size: 80%;"><b>Linear Regression code, Intercept handling first</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs166.html#code-examples" style="font-size: 80%;"><b>Code Examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs167.html#taking-out-the-mean" style="font-size: 80%;"><b>Taking out the mean</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs168.html#friday-september-9" style="font-size: 80%;"><b>Friday September 9</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs169.html#linking-the-regression-analysis-with-a-statistical-interpretation" style="font-size: 80%;"><b>Linking the regression analysis with a statistical interpretation</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs170.html#assumptions-made" style="font-size: 80%;"><b>Assumptions made</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs171.html#expectation-value-and-variance" style="font-size: 80%;"><b>Expectation value and variance</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs172.html#expectation-value-and-variance-for-boldsymbol-beta" style="font-size: 80%;"><b>Expectation value and variance for \( \boldsymbol{\beta} \)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs173.html#deriving-ols-from-a-probability-distribution" style="font-size: 80%;"><b>Deriving OLS from a probability distribution</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs174.html#independent-and-identically-distrubuted-iid" style="font-size: 80%;"><b>Independent and Identically Distrubuted (iid)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs175.html#maximum-likelihood-estimation-mle" style="font-size: 80%;"><b>Maximum Likelihood Estimation (MLE)</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs176.html#a-new-cost-function" style="font-size: 80%;"><b>A new Cost Function</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs177.html#more-basic-statistics-and-bayes-theorem" style="font-size: 80%;"><b>More basic Statistics and Bayes' theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#marginal-probability" style="font-size: 80%;"><b>Marginal Probability</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs179.html#conditional-probability" style="font-size: 80%;"><b>Conditional  Probability</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs180.html#bayes-theorem" style="font-size: 80%;"><b>Bayes' Theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs181.html#interpretations-of-bayes-theorem" style="font-size: 80%;"><b>Interpretations of Bayes' Theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs182.html#example-of-usage-of-bayes-theorem" style="font-size: 80%;"><b>Example of Usage of Bayes' theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs183.html#doing-it-correctly" style="font-size: 80%;"><b>Doing it correctly</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs184.html#bayes-theorem-and-ridge-and-lasso-regression" style="font-size: 80%;"><b>Bayes' Theorem and Ridge and Lasso Regression</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs185.html#test-function-for-what-happens-with-ols-ridge-and-lasso" style="font-size: 80%;"><b>Test Function for what happens with OLS, Ridge and Lasso</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs186.html#invoking-bayes-theorem" style="font-size: 80%;"><b>Invoking Bayes' theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs187.html#ridge-and-bayes" style="font-size: 80%;"><b>Ridge and Bayes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs188.html#lasso-and-bayes" style="font-size: 80%;"><b>Lasso and Bayes</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+<div class="container">
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+<a name="part0178"></a>
+<!-- !split -->
+<h2 id="marginal-probability" class="anchor">Marginal Probability </h2>
+
+<p>The marginal probability is defined in terms of only one of the set of variables \( X,Y \). For a discrete probability we have</p>
+<div class="panel panel-default">
+<div class="panel-body">
+<!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+$$
+p(X)=\sum_{i=0}^{n-1}p(X,Y=y_i)=\sum_{i=0}^{n-1}p(X\vert Y=y_i)p(Y=y_i)=\sum_{i=0}^{n-1}p(X\vert y_i)p(y_i).
+$$
+</div>
+</div>
+
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._mlnuclear-bs177.html">&laquo;</a></li>
+  <li><a href="._mlnuclear-bs000.html">1</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._mlnuclear-bs170.html">171</a></li>
+  <li><a href="._mlnuclear-bs171.html">172</a></li>
+  <li><a href="._mlnuclear-bs172.html">173</a></li>
+  <li><a href="._mlnuclear-bs173.html">174</a></li>
+  <li><a href="._mlnuclear-bs174.html">175</a></li>
+  <li><a href="._mlnuclear-bs175.html">176</a></li>
+  <li><a href="._mlnuclear-bs176.html">177</a></li>
+  <li><a href="._mlnuclear-bs177.html">178</a></li>
+  <li class="active"><a href="._mlnuclear-bs178.html">179</a></li>
+  <li><a href="._mlnuclear-bs179.html">180</a></li>
+  <li><a href="._mlnuclear-bs180.html">181</a></li>
+  <li><a href="._mlnuclear-bs181.html">182</a></li>
+  <li><a href="._mlnuclear-bs182.html">183</a></li>
+  <li><a href="._mlnuclear-bs183.html">184</a></li>
+  <li><a href="._mlnuclear-bs184.html">185</a></li>
+  <li><a href="._mlnuclear-bs185.html">186</a></li>
+  <li><a href="._mlnuclear-bs186.html">187</a></li>
+  <li><a href="._mlnuclear-bs187.html">188</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._mlnuclear-bs188.html">189</a></li>
+  <li><a href="._mlnuclear-bs179.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<!-- Bootstrap footer
+<footer>
+<a href="https://..."><img width="250" align=right src="https://..."></a>
+</footer>
+-->
+</body>
+</html>
+
