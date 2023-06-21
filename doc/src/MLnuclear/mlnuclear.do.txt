@@ -1031,6 +1031,9 @@ plt.show()
 !ec
 
 
+!split
+======= Background material =======
+
 
 !split
 ===== Why Linear Regression (aka Ordinary Least Squares and family) =====
