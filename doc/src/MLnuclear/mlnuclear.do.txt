@@ -1,5 +1,5 @@
 TITLE: Practical Uncertainty Quantification and Emulator Development in Nuclear Physics
-AUTHOR: Morten Hjorth-Jensen at Department of Physics and Astronomy and FRIB/NSCL Laboratory, Michigan State University
+AUTHOR: Morten Hjorth-Jensen at Department of Physics anad Astronomy and FRIB/NSCL Laboratory, Michigan State University
 DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 
 
@@ -8,7 +8,7 @@ DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 !bblock
 o Examples of applications of ML in nuclear physics
 o What are the basics ingredients and how can we get started? The nuclear masses as a data set and example through these lectures
-  * Basic ingredients, cost functions, data set and optimization
+  * Basic ingredients: cost/loss functions, data set, models and optimization algorithms
   * Nuclear masses, from the standard least squares method to deep learning approaches
 !eblock
 
@@ -22,7 +22,7 @@ o What are the basics ingredients and how can we get started? The nuclear masses
 !split
 ===== Many folks to thank =====
 
-Thanks to Jane Kim (MSU), Julie Butler (MSU), Daniel Bazin (MSU), Dean Lee (MSU), Witek Nazarewicz (MSU), Michelle Kuchera (Davidson College), Vilde Flugsrud (UiO), Even Nordhagen (UiO), Robert Solli (UiO, Expert Analytics), Corey Adams (ANL), Bryce Fore (ANL), and Alessandro Lovato (ANL). Excuses to those I have omitted.
+Thanks to Jane Kim (MSU), Julie Butler (MSU), Daniel Bazin (MSU), Dean Lee (MSU), Witek Nazarewicz (MSU), Michelle Kuchera (Davidson College), Even Nordhagen (UiO), Robert Solli (UiO, Expert Analytics), Bryce Fore (ANL), Alessandro Lovato (ANL),  and Giuseppe Carleo (EPFL). Excuses to those I have omitted.
 
 !split
 ===== A simple perspective on the interface between ML and Physics =====
