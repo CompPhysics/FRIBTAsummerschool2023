@@ -5,6 +5,7 @@ DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 
 !split
 ===== What is this lecture about? =====
+
 !bblock
 o Examples of applications of ML in nuclear physics
 o What are the basics ingredients and how can we get started? The nuclear masses as a data set and example through these lectures
@@ -14,7 +15,7 @@ o What are the basics ingredients and how can we get started? The nuclear masses
 
 
 !bblock Additional info
-* To read about nuclear physics applications see  _Artificial Intelligence and Machine Learning in Nuclear Physics_, Amber Boehnlein et al., "arXiv:2112.02309":"https://arxiv.org/abs/2112.02309" and Reviews Modern of Physics, 2022. 
+* To read about nuclear physics applications see  _Artificial Intelligence and Machine Learning in Nuclear Physics_, Amber Boehnlein et al., "arXiv:2112.02309":"https://arxiv.org/abs/2112.02309" and Reviews of Modern Physics, 2022. 
 
 
 !eblock
