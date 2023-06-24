@@ -7,7 +7,7 @@ DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 ===== What is this lecture about? =====
 
 !bblock
-o Examples of applications of ML in nuclear physics
+o Examples of applications of ML in nuclear physics, from Lattice QCD to the nuclear many-body problem
 o What are the basics ingredients and how can we get started? The nuclear masses as a data set and example through these lectures
   * Basic ingredients: cost/loss functions, data set, models and optimization algorithms
   * Nuclear masses, from the standard least squares method to deep learning approaches
