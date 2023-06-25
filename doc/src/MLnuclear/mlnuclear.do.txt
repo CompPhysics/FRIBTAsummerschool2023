@@ -43,21 +43,6 @@ essentially all disciplines, from the traditional Science, Technology,
 Mathematics and Engineering fields to Life Science, Law, education
 research, the Humanities and the Social Sciences. 
 
-It has become more
-and more common to see research projects on big data in for example
-the Social Sciences where extracting patterns from complicated survey
-data is one of many research directions.  Having a solid grasp of data
-analysis and machine learning is thus becoming central to scientific
-computing in many fields, and competences and skills within the fields
-of machine learning and scientific computing are nowadays strongly
-requested by many potential employers. The latter cannot be
-overstated, familiarity with machine learning has almost become a
-prerequisite for many of the most exciting employment opportunities,
-whether they are in bioinformatics, life science, physics or finance,
-in the private or the public sector. This author has had several
-students or met students who have been hired recently based on their
-skills and competences in scientific computing and data science, often
-with marginal knowledge of machine learning.
 
 Machine learning is a subfield of computer science, and is closely
 related to computational statistics.  It evolved from the study of
@@ -81,11 +66,18 @@ age. The increases we have seen during the last three decades in
 computational capabilities have been followed by developments of
 methods and techniques for analyzing and handling large date sets,
 relying heavily on statistics, computer science and mathematics.  The
-field is rather new and developing rapidly. Popular software packages
+field is rather new and developing rapidly.
+
+
+!split
+===== Popular libraries =====
+
+Popular software packages
 written in Python for machine learning like
-"Scikit-learn":"http://scikit-learn.org/stable/",
-"Tensorflow":"https://www.tensorflow.org/",
-"PyTorch":"http://pytorch.org/" and "Keras":"https://keras.io/", all
+* "Scikit-learn":"http://scikit-learn.org/stable/",
+* "Tensorflow":"https://www.tensorflow.org/",
+* "PyTorch":"http://pytorch.org/" and "Keras":"https://keras.io/",
+and many other,  all
 freely available at their respective GitHub sites, encompass
 communities of developers in the thousands or more. And the number of
 code developers and contributors keeps increasing. Not all the
