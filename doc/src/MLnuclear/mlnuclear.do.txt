@@ -300,27 +300,6 @@ _Job market, a personal statement_: "A familiarity with ML is almost becoming a 
 
 
 
-!split
-===== Types of machine learning =====
-
-!bblock
-The approaches to machine learning are many, but are often split into two main categories. 
-In *supervised learning* we know the answer to a problem,
-and let the computer deduce the logic behind it. On the other hand, *unsupervised learning*
-is a method for finding patterns and relationship in data sets without any prior knowledge of the system.
-Some authours also operate with a third category, namely *reinforcement learning*. This is a paradigm 
-of learning inspired by behavioural psychology, where learning is achieved by trial-and-error, 
-solely from rewards and punishment.
-
-Another way to categorize machine learning tasks is to consider the desired output of a system.
-Some of the most common tasks are:
-
-  * Classification: Outputs are divided into two or more classes. The goal is to   produce a model that assigns inputs into one of these classes. An example is to identify  digits based on pictures of hand-written ones. Classification is typically supervised learning.
-
-  * Regression: Finding a functional relationship between an input data set and a reference data set.   The goal is to construct a function that maps input data to continuous output values.
-
-  * Clustering: Data are divided into groups with certain common traits, without knowing the different groups beforehand.  It is thus a form of unsupervised learning.
-!eblock
 
 
 !split
@@ -421,18 +400,6 @@ The large amount of degrees of freedom pertain to both theory and experiment in 
 
 
 
-
-
-!split
-===== What are the basic ingredients? =====
-!bblock
-Almost every problem in ML and data science starts with the same ingredients:
-* The dataset $\mathbf{x}$ (could be some observable quantity of the system we are studying)
-* A model which is a function of a set of parameters $\mathbf{\alpha}$ that relates to the dataset, say a likelihood  function $p(\mathbf{x}\vert \mathbf{\alpha})$ or just a simple model $f(\mathbf{\alpha})$
-* A so-called _loss/cost/risk_ function $\mathcal{C} (\mathbf{x}, f(\mathbf{\alpha}))$ which allows us to decide how well our model represents the dataset. 
-
-We seek to minimize the function $\mathcal{C} (\mathbf{x}, f(\mathbf{\alpha}))$ by finding the parameter values which minimize $\mathcal{C}$. This leads to  various minimization algorithms. It may surprise many, but at the heart of all machine learning algortihms there is an optimization problem. 
-!eblock
 
 
 
@@ -632,14 +599,6 @@ necessarily normalized and is normally called the likelihood function.
 The function $p(X)$ on the right hand side is called the prior while the function on the left hand side is the called the posterior probability. The denominator on the right hand side serves as a normalization factor for the posterior distribution.
 
 
-!split
-===== Folding and unfolding and response functions =====
-
-A good read on folding/unfolding is "An Unfolding Method for High Energy Physics Experiments by Volker Blobel":"https://arxiv.org/abs/hep-ex/0208022"
-
-See notebook details and "examples of simple data reconstructed with Gaussian processes":"https://github.com/adambozson/gp-unfold/blob/master/Falling%20exponential.ipynb".
-
-
 
 !split
 ===== Quantified limits of the nuclear landscape =====
@@ -679,13 +638,6 @@ FIGURE: [figures/nstareos.png, width=800 frac=1.0]
 * Make an ML challenge in nuclear physics a la "Learning to discover: the Higgs boson machine learning challenge":"https://home.cern/news/news/computing/higgs-boson-machine-learning-challenge". Alternatively go to kaggle.com at URL:"https://www.kaggle.com/c/higgs-boson"
 * HEP@CERN and HEP in general have made significant impacts in the field of machine learning and AI. Something to learn from
 !eblock
-
-
-
-
-
-
-
 
 
 
