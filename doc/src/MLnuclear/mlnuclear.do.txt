@@ -1,5 +1,5 @@
 TITLE: Practical Uncertainty Quantification and Emulator Development in Nuclear Physics
-AUTHOR: Morten Hjorth-Jensen at Department of Physics anad Astronomy and FRIB/NSCL Laboratory, Michigan State University
+AUTHOR: Morten Hjorth-Jensen at Facility for Rare Isotope Beams and Department of Physics and Astronomy, Michigan State University
 DATE: FRIB-TA summer school, Michigan State University, June 26-28, 2023
 
 
