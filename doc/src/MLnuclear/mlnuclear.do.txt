@@ -379,19 +379,6 @@ o _Neural-network quantum states for ultra-cold Fermi gases_,  Jane Kim, Gabriel
 o _Message-Passing Neural Quantum States for the Homogeneous Electron Gas_, Gabriel Pescia, Jannes Nys, Jane Kim, Alessandro Lovato, Giuseppe Carleo, "arXiv:2305.07240":"https://doi.org/10.48550/arXiv.2305.07240"
 
 
-!split
-===== Extrapolations and model interpretability  =====
-
-When you hear phrases like _predictions and estimations_ and
-_correlations and causations_, what do you think of?  May be you think
-of the difference between classifying new data points and generating
-new data points.
-Or perhaps you consider that correlations represent some kind of symmetric statements like
-if $A$ is correlated with $B$, then $B$ is correlated with
-$A$. Causation on the other hand is directional, that is if $A$ causes $B$, $B$ does not
-necessarily cause $A$.
-
-
 
 !split
 ===== Quantified limits of the nuclear landscape =====
