@@ -16,14 +16,14 @@ o What are the basics ingredients and how can we get started? The nuclear masses
 
 !bblock Additional info
 * To read about nuclear physics applications see  _Artificial Intelligence and Machine Learning in Nuclear Physics_, Amber Boehnlein et al., "Reviews of Modern Physics, 94, 2022":"https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.94.031003". 
-
+* "Machine learning lecture notes by MHJ":"https://compphysics.github.io/MachineLearning/doc/LectureNotes/_build/html/intro.html"
 
 !eblock
 
 !split
 ===== Many folks to thank =====
 
-Thanks to Jane Kim (MSU), Julie Butler (MSU), Daniel Bazin (MSU), Dean Lee (MSU), Witek Nazarewicz (MSU), Michelle Kuchera (Davidson College), Even Nordhagen (UiO), Robert Solli (UiO, Expert Analytics), Bryce Fore (ANL), Alessandro Lovato (ANL),  and Giuseppe Carleo (EPFL). Excuses to those I have omitted.
+Thanks to Jane Kim (MSU), Julie Butler (MSU), Daniel Bazin (MSU), Dean Lee (MSU), Witek Nazarewicz (MSU), Michelle Kuchera (Davidson College), Even Nordhagen (UiO), Robert Solli (UiO, Expert Analytics), Bryce Fore (ANL), Alessandro Lovato (ANL),  and Giuseppe Carleo (EPFL). Excuses to those I have omitted/forgotten.
 
 !split
 ===== A simple perspective on the interface between ML and Physics =====
@@ -67,27 +67,6 @@ computational capabilities have been followed by developments of
 methods and techniques for analyzing and handling large date sets,
 relying heavily on statistics, computer science and mathematics.  The
 field is rather new and developing rapidly.
-
-
-!split
-===== Popular libraries =====
-
-Popular software packages
-written in Python for machine learning like
-* "Scikit-learn":"http://scikit-learn.org/stable/",
-* "Tensorflow":"https://www.tensorflow.org/",
-* "PyTorch":"http://pytorch.org/" and "Keras":"https://keras.io/",
-and many other,  all
-freely available at their respective GitHub sites, encompass
-communities of developers in the thousands or more. And the number of
-code developers and contributors keeps increasing. Not all the
-algorithms and methods can be given a rigorous mathematical
-justification, opening up thereby large rooms for experimenting and
-trial and error and thereby exciting new developments.  However, a
-solid command of linear algebra, multivariate theory, probability
-theory, statistical data analysis, understanding errors and Monte
-Carlo methods are central elements in a proper understanding of many
-of algorithms and methods we will discuss.
 
 
 !split
