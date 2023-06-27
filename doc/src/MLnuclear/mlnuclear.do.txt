@@ -898,43 +898,6 @@ plt.show()
 !ec
 
 
-=== Seeing the wood for the trees ===
-
-As a teaser, let us now see how we can do this with decision trees using _scikit-learn_. Later we will switch to so-called _random forests_!
-
-
-!bc pycod
-
-#Decision Tree Regression
-from sklearn.tree import DecisionTreeRegressor
-regr_1=DecisionTreeRegressor(max_depth=5)
-regr_2=DecisionTreeRegressor(max_depth=7)
-regr_3=DecisionTreeRegressor(max_depth=9)
-regr_1.fit(X, Energies)
-regr_2.fit(X, Energies)
-regr_3.fit(X, Energies)
-
-
-y_1 = regr_1.predict(X)
-y_2 = regr_2.predict(X)
-y_3=regr_3.predict(X)
-Masses['Eapprox'] = y_3
-# Plot the results
-plt.figure()
-plt.plot(A, Energies, color="blue", label="Data", linewidth=2)
-plt.plot(A, y_1, color="red", label="max_depth=5", linewidth=2)
-plt.plot(A, y_2, color="green", label="max_depth=7", linewidth=2)
-plt.plot(A, y_3, color="m", label="max_depth=9", linewidth=2)
-
-plt.xlabel("$A$")
-plt.ylabel("$E$[MeV]")
-plt.title("Decision Tree Regression")
-plt.legend()
-save_fig("Masses2016Trees")
-plt.show()
-print(Masses)
-print(np.mean( (Energies-y_1)**2))
-!ec
 
 
 === And what about using neural networks? ===

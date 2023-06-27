@@ -218,10 +218,6 @@ div.toc p,a {
                None,
                'to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies'),
               ('Organizing our data', 3, None, 'organizing-our-data'),
-              ('Seeing the wood for the trees',
-               3,
-               None,
-               'seeing-the-wood-for-the-trees'),
               ('And what about using neural networks?',
                3,
                None,
@@ -1798,60 +1794,6 @@ ax.plot(Masses[<span style="color: #CD5555">&#39;A&#39;</span>], Masses[<span st
 ax.legend()
 save_fig(<span style="color: #CD5555">&quot;Masses2016&quot;</span>)
 plt.show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<h3 id="seeing-the-wood-for-the-trees">Seeing the wood for the trees </h3>
-
-<p>As a teaser, let us now see how we can do this with decision trees using <b>scikit-learn</b>. Later we will switch to so-called <b>random forests</b>!</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="line-height: 125%;"><span style="color: #228B22">#Decision Tree Regression</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeRegressor
-regr_1=DecisionTreeRegressor(max_depth=<span style="color: #B452CD">5</span>)
-regr_2=DecisionTreeRegressor(max_depth=<span style="color: #B452CD">7</span>)
-regr_3=DecisionTreeRegressor(max_depth=<span style="color: #B452CD">9</span>)
-regr_1.fit(X, Energies)
-regr_2.fit(X, Energies)
-regr_3.fit(X, Energies)
-
-
-y_1 = regr_1.predict(X)
-y_2 = regr_2.predict(X)
-y_3=regr_3.predict(X)
-Masses[<span style="color: #CD5555">&#39;Eapprox&#39;</span>] = y_3
-<span style="color: #228B22"># Plot the results</span>
-plt.figure()
-plt.plot(A, Energies, color=<span style="color: #CD5555">&quot;blue&quot;</span>, label=<span style="color: #CD5555">&quot;Data&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-plt.plot(A, y_1, color=<span style="color: #CD5555">&quot;red&quot;</span>, label=<span style="color: #CD5555">&quot;max_depth=5&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-plt.plot(A, y_2, color=<span style="color: #CD5555">&quot;green&quot;</span>, label=<span style="color: #CD5555">&quot;max_depth=7&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-plt.plot(A, y_3, color=<span style="color: #CD5555">&quot;m&quot;</span>, label=<span style="color: #CD5555">&quot;max_depth=9&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-
-plt.xlabel(<span style="color: #CD5555">&quot;$A$&quot;</span>)
-plt.ylabel(<span style="color: #CD5555">&quot;$E$[MeV]&quot;</span>)
-plt.title(<span style="color: #CD5555">&quot;Decision Tree Regression&quot;</span>)
-plt.legend()
-save_fig(<span style="color: #CD5555">&quot;Masses2016Trees&quot;</span>)
-plt.show()
-<span style="color: #658b00">print</span>(Masses)
-<span style="color: #658b00">print</span>(np.mean( (Energies-y_1)**<span style="color: #B452CD">2</span>))
 </pre>
 </div>
       </div>

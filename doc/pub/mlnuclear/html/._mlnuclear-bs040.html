@@ -191,10 +191,6 @@ doconce format html mlnuclear.do.txt --html_style=bootstrap --pygments_html_styl
                None,
                'to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies'),
               ('Organizing our data', 3, None, 'organizing-our-data'),
-              ('Seeing the wood for the trees',
-               3,
-               None,
-               'seeing-the-wood-for-the-trees'),
               ('And what about using neural networks?',
                3,
                None,
@@ -700,7 +696,6 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#possible-start-to-raise-awareness-about-ml-in-our-field" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Possible start to raise awareness about ML in our field</a></li>
      <!-- navigation toc: --> <li><a href="#to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To our real data: nuclear binding energies. Brief reminder on masses and binding energies</a></li>
      <!-- navigation toc: --> <li><a href="#organizing-our-data" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Organizing our data</a></li>
-     <!-- navigation toc: --> <li><a href="#seeing-the-wood-for-the-trees" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seeing the wood for the trees</a></li>
      <!-- navigation toc: --> <li><a href="#and-what-about-using-neural-networks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And what about using neural networks?</a></li>
      <!-- navigation toc: --> <li><a href="._mlnuclear-bs041.html#background-material" style="font-size: 80%;"><b>Background material</b></a></li>
      <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#why-linear-regression-aka-ordinary-least-squares-and-family" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why Linear Regression (aka Ordinary Least Squares and family)</a></li>
@@ -1258,60 +1253,6 @@ ax<span style="color: #666666">.</span>plot(Masses[<span style="color: #BA2121">
 ax<span style="color: #666666">.</span>legend()
 save_fig(<span style="color: #BA2121">&quot;Masses2016&quot;</span>)
 plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<h3 id="seeing-the-wood-for-the-trees" class="anchor">Seeing the wood for the trees </h3>
-
-<p>As a teaser, let us now see how we can do this with decision trees using <b>scikit-learn</b>. Later we will switch to so-called <b>random forests</b>!</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic">#Decision Tree Regression</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.tree</span> <span style="color: #008000; font-weight: bold">import</span> DecisionTreeRegressor
-regr_1<span style="color: #666666">=</span>DecisionTreeRegressor(max_depth<span style="color: #666666">=5</span>)
-regr_2<span style="color: #666666">=</span>DecisionTreeRegressor(max_depth<span style="color: #666666">=7</span>)
-regr_3<span style="color: #666666">=</span>DecisionTreeRegressor(max_depth<span style="color: #666666">=9</span>)
-regr_1<span style="color: #666666">.</span>fit(X, Energies)
-regr_2<span style="color: #666666">.</span>fit(X, Energies)
-regr_3<span style="color: #666666">.</span>fit(X, Energies)
-
-
-y_1 <span style="color: #666666">=</span> regr_1<span style="color: #666666">.</span>predict(X)
-y_2 <span style="color: #666666">=</span> regr_2<span style="color: #666666">.</span>predict(X)
-y_3<span style="color: #666666">=</span>regr_3<span style="color: #666666">.</span>predict(X)
-Masses[<span style="color: #BA2121">&#39;Eapprox&#39;</span>] <span style="color: #666666">=</span> y_3
-<span style="color: #408080; font-style: italic"># Plot the results</span>
-plt<span style="color: #666666">.</span>figure()
-plt<span style="color: #666666">.</span>plot(A, Energies, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;blue&quot;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Data&quot;</span>, linewidth<span style="color: #666666">=2</span>)
-plt<span style="color: #666666">.</span>plot(A, y_1, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;red&quot;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;max_depth=5&quot;</span>, linewidth<span style="color: #666666">=2</span>)
-plt<span style="color: #666666">.</span>plot(A, y_2, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;green&quot;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;max_depth=7&quot;</span>, linewidth<span style="color: #666666">=2</span>)
-plt<span style="color: #666666">.</span>plot(A, y_3, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;m&quot;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;max_depth=9&quot;</span>, linewidth<span style="color: #666666">=2</span>)
-
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;$A$&quot;</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;$E$[MeV]&quot;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Decision Tree Regression&quot;</span>)
-plt<span style="color: #666666">.</span>legend()
-save_fig(<span style="color: #BA2121">&quot;Masses2016Trees&quot;</span>)
-plt<span style="color: #666666">.</span>show()
-<span style="color: #008000">print</span>(Masses)
-<span style="color: #008000">print</span>(np<span style="color: #666666">.</span>mean( (Energies<span style="color: #666666">-</span>y_1)<span style="color: #666666">**2</span>))
 </pre>
 </div>
       </div>
