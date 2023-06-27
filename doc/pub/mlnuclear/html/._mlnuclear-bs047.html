@@ -183,6 +183,11 @@ doconce format html mlnuclear.do.txt --html_style=bootstrap --pygments_html_styl
                3,
                None,
                'and-what-about-using-neural-networks'),
+              ('Does this make sense?', 2, None, 'does-this-make-sense'),
+              ('How do we related say linear regression to Bayesian analysis?',
+               2,
+               None,
+               'how-do-we-related-say-linear-regression-to-bayesian-analysis'),
               ('Background material', 1, None, 'background-material'),
               ('Why Linear Regression (aka Ordinary Least Squares and family)',
                2,
@@ -327,30 +332,32 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._mlnuclear-bs039.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Interpretations and optimizing our parameters</a></li>
      <!-- navigation toc: --> <li><a href="._mlnuclear-bs039.html#interpretations-and-optimizing-our-parameters" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Interpretations and optimizing our parameters</a></li>
      <!-- navigation toc: --> <li><a href="._mlnuclear-bs039.html#and-what-about-using-neural-networks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And what about using neural networks?</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs040.html#background-material" style="font-size: 80%;"><b>Background material</b></a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs041.html#why-linear-regression-aka-ordinary-least-squares-and-family" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why Linear Regression (aka Ordinary Least Squares and family)</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#regression-analysis-overarching-aims" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Regression analysis, overarching aims</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs043.html#regression-analysis-overarching-aims-ii" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Regression analysis, overarching aims II</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs044.html#linking-the-regression-analysis-with-a-statistical-interpretation" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linking the regression analysis with a statistical interpretation</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs045.html#assumptions-made" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assumptions made</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs046.html#expectation-value-and-variance" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Expectation value and variance</a></li>
-     <!-- navigation toc: --> <li><a href="#expectation-value-and-variance-for-boldsymbol-beta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Expectation value and variance for \( \boldsymbol{\beta} \)</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs048.html#deriving-ols-from-a-probability-distribution" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Deriving OLS from a probability distribution</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs049.html#independent-and-identically-distrubuted-iid" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Independent and Identically Distrubuted (iid)</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs050.html#maximum-likelihood-estimation-mle" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maximum Likelihood Estimation (MLE)</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs051.html#a-new-cost-function" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A new Cost Function</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs052.html#more-basic-statistics-and-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More basic Statistics and Bayes' theorem</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs053.html#marginal-probability" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Marginal Probability</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs054.html#conditional-probability" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conditional  Probability</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs055.html#bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bayes' Theorem</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs056.html#interpretations-of-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Interpretations of Bayes' Theorem</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs057.html#example-of-usage-of-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example of Usage of Bayes' theorem</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs058.html#doing-it-correctly" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Doing it correctly</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs059.html#bayes-theorem-and-ridge-and-lasso-regression" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bayes' Theorem and Ridge and Lasso Regression</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs060.html#test-function-for-what-happens-with-ols-ridge-and-lasso" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Test Function for what happens with OLS, Ridge and Lasso</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs061.html#invoking-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Invoking Bayes' theorem</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs062.html#ridge-and-bayes" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Ridge and Bayes</a></li>
-     <!-- navigation toc: --> <li><a href="._mlnuclear-bs063.html#lasso-and-bayes" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lasso and Bayes</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs040.html#does-this-make-sense" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Does this make sense?</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs041.html#how-do-we-related-say-linear-regression-to-bayesian-analysis" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How do we related say linear regression to Bayesian analysis?</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs042.html#background-material" style="font-size: 80%;"><b>Background material</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs043.html#why-linear-regression-aka-ordinary-least-squares-and-family" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why Linear Regression (aka Ordinary Least Squares and family)</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs044.html#regression-analysis-overarching-aims" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Regression analysis, overarching aims</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs045.html#regression-analysis-overarching-aims-ii" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Regression analysis, overarching aims II</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs046.html#linking-the-regression-analysis-with-a-statistical-interpretation" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linking the regression analysis with a statistical interpretation</a></li>
+     <!-- navigation toc: --> <li><a href="#assumptions-made" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assumptions made</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs048.html#expectation-value-and-variance" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Expectation value and variance</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs049.html#expectation-value-and-variance-for-boldsymbol-beta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Expectation value and variance for \( \boldsymbol{\beta} \)</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs050.html#deriving-ols-from-a-probability-distribution" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Deriving OLS from a probability distribution</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs051.html#independent-and-identically-distrubuted-iid" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Independent and Identically Distrubuted (iid)</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs052.html#maximum-likelihood-estimation-mle" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maximum Likelihood Estimation (MLE)</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs053.html#a-new-cost-function" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A new Cost Function</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs054.html#more-basic-statistics-and-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More basic Statistics and Bayes' theorem</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs055.html#marginal-probability" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Marginal Probability</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs056.html#conditional-probability" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conditional  Probability</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs057.html#bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bayes' Theorem</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs058.html#interpretations-of-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Interpretations of Bayes' Theorem</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs059.html#example-of-usage-of-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example of Usage of Bayes' theorem</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs060.html#doing-it-correctly" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Doing it correctly</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs061.html#bayes-theorem-and-ridge-and-lasso-regression" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bayes' Theorem and Ridge and Lasso Regression</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs062.html#test-function-for-what-happens-with-ols-ridge-and-lasso" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Test Function for what happens with OLS, Ridge and Lasso</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs063.html#invoking-bayes-theorem" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Invoking Bayes' theorem</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs064.html#ridge-and-bayes" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Ridge and Bayes</a></li>
+     <!-- navigation toc: --> <li><a href="._mlnuclear-bs065.html#lasso-and-bayes" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lasso and Bayes</a></li>
 
         </ul>
       </li>
@@ -362,82 +369,23 @@ MathJax.Hub.Config({
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 <a name="part0047"></a>
 <!-- !split -->
-<h2 id="expectation-value-and-variance-for-boldsymbol-beta" class="anchor">Expectation value and variance for \( \boldsymbol{\beta} \) </h2>
+<h2 id="assumptions-made" class="anchor">Assumptions made </h2>
 
-<p>With the OLS expressions for the optimal parameters \( \boldsymbol{\hat{\beta}} \) we can evaluate the expectation value</p>
-$$
-\mathbb{E}(\boldsymbol{\hat{\beta}}) = \mathbb{E}[ (\mathbf{X}^{\top} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbb{E}[ \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1} \mathbf{X}^{T}\mathbf{X}\boldsymbol{\beta}=\boldsymbol{\beta}.
-$$
-
-<p>This means that the estimator of the regression parameters is unbiased.</p>
-
-<p>We can also calculate the variance</p>
-
-<p>The variance of the optimal value \( \boldsymbol{\hat{\beta}} \) is</p>
-$$
-\begin{eqnarray*}
-\mbox{Var}(\boldsymbol{\hat{\beta}}) & = & \mathbb{E} \{ [\boldsymbol{\beta} - \mathbb{E}(\boldsymbol{\beta})] [\boldsymbol{\beta} - \mathbb{E}(\boldsymbol{\beta})]^{T} \}
-\\
-& = & \mathbb{E} \{ [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} - \boldsymbol{\beta}] \, [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} - \boldsymbol{\beta}]^{T} \}
-\\
-% & = & \mathbb{E} \{ [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y}] \, [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y}]^{T} \} - \boldsymbol{\beta} \, \boldsymbol{\beta}^{T}
-% \\
-% & = & \mathbb{E} \{ (\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} \, \mathbf{Y}^{T} \, \mathbf{X} \, (\mathbf{X}^{T} \mathbf{X})^{-1}  \} - \boldsymbol{\beta} \, \boldsymbol{\beta}^{T}
-% \\
-& = & (\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \, \mathbb{E} \{ \mathbf{Y} \, \mathbf{Y}^{T} \} \, \mathbf{X} \, (\mathbf{X}^{T} \mathbf{X})^{-1} - \boldsymbol{\beta} \, \boldsymbol{\beta}^{T}
-\\
-& = & (\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \, \{ \mathbf{X} \, \boldsymbol{\beta} \, \boldsymbol{\beta}^{T} \,  \mathbf{X}^{T} + \sigma^2 \} \, \mathbf{X} \, (\mathbf{X}^{T} \mathbf{X})^{-1} - \boldsymbol{\beta} \, \boldsymbol{\beta}^{T}
-% \\
-% & = & (\mathbf{X}^T \mathbf{X})^{-1} \, \mathbf{X}^T \, \mathbf{X} \, \boldsymbol{\beta} \, \boldsymbol{\beta}^T \,  \mathbf{X}^T \, \mathbf{X} \, (\mathbf{X}^T % \mathbf{X})^{-1}
-% \\
-% & & + \, \, \sigma^2 \, (\mathbf{X}^T \mathbf{X})^{-1} \, \mathbf{X}^T  \, \mathbf{X} \, (\mathbf{X}^T \mathbf{X})^{-1} - \boldsymbol{\beta} \boldsymbol{\beta}^T
-\\
-& = & \boldsymbol{\beta} \, \boldsymbol{\beta}^{T}  + \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1} - \boldsymbol{\beta} \, \boldsymbol{\beta}^{T}
-\, \, \, = \, \, \, \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1},
-\end{eqnarray*}
-$$
-
-<p>where we have used  that \( \mathbb{E} (\mathbf{Y} \mathbf{Y}^{T}) =
-\mathbf{X} \, \boldsymbol{\beta} \, \boldsymbol{\beta}^{T} \, \mathbf{X}^{T} +
-\sigma^2 \, \mathbf{I}_{nn} \). From \( \mbox{Var}(\boldsymbol{\beta}) = \sigma^2
-\, (\mathbf{X}^{T} \mathbf{X})^{-1} \), one obtains an estimate of the
-variance of the estimate of the \( j \)-th regression coefficient:
-\( \boldsymbol{\sigma}^2 (\boldsymbol{\beta}_j ) = \boldsymbol{\sigma}^2 [(\mathbf{X}^{T} \mathbf{X})^{-1}]_{jj}  \). This may be used to
-construct a confidence interval for the estimates.
+<p>The assumption we have made here can be summarized as (and this is going to be useful when we discuss the bias-variance trade off)
+that there exists a function \( f(\boldsymbol{x}) \) and  a normal distributed error \( \boldsymbol{\varepsilon}\sim \mathcal{N}(0, \sigma^2) \)
+which describe our data
 </p>
+$$
+\boldsymbol{y} = f(\boldsymbol{x})+\boldsymbol{\varepsilon}
+$$
 
-<p>In a similar way, we can obtain analytical expressions for say the
-expectation values of the parameters \( \boldsymbol{\beta} \) and their variance
-when we employ Ridge regression, allowing us again to define a confidence interval. 
+<p>We approximate this function with our model from the solution of the linear regression equations, that is our
+function \( f \) is approximated by \( \boldsymbol{\tilde{y}} \) where we want to minimize \( (\boldsymbol{y}-\boldsymbol{\tilde{y}})^2 \), our MSE, with
 </p>
-
-<p>It is rather straightforward to show that</p>
 $$
-\mathbb{E} \big[ \boldsymbol{\beta}^{\mathrm{Ridge}} \big]=(\mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I}_{pp})^{-1} (\mathbf{X}^{\top} \mathbf{X})\boldsymbol{\beta}^{\mathrm{OLS}}.
+\boldsymbol{\tilde{y}} = \boldsymbol{X}\boldsymbol{\beta}.
 $$
 
-<p>We see clearly that 
-\( \mathbb{E} \big[ \boldsymbol{\beta}^{\mathrm{Ridge}} \big] \not= \boldsymbol{\beta}^{\mathrm{OLS}} \) for any \( \lambda > 0 \). We say then that the ridge estimator is biased.
-</p>
-
-<p>We can also compute the variance as </p>
-
-$$
-\mbox{Var}[\boldsymbol{\beta}^{\mathrm{Ridge}}]=\sigma^2[  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}  \mathbf{X}^{T} \mathbf{X} \{ [  \mathbf{X}^{\top} \mathbf{X} + \lambda \mathbf{I} ]^{-1}\}^{T},
-$$
-
-<p>and it is easy to see that if the parameter \( \lambda \) goes to infinity then the variance of Ridge parameters \( \boldsymbol{\beta} \) goes to zero. </p>
-
-<p>With this, we can compute the difference </p>
-
-$$
-\mbox{Var}[\boldsymbol{\beta}^{\mathrm{OLS}}]-\mbox{Var}(\boldsymbol{\beta}^{\mathrm{Ridge}})=\sigma^2 [  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}[ 2\lambda\mathbf{I} + \lambda^2 (\mathbf{X}^{T} \mathbf{X})^{-1} ] \{ [  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}\}^{T}.
-$$
-
-<p>The difference is non-negative definite since each component of the
-matrix product is non-negative definite. 
-This means the variance we obtain with the standard OLS will always for \( \lambda > 0 \) be larger than the variance of \( \boldsymbol{\beta} \) obtained with the Ridge estimator. This has interesting consequences when we discuss the so-called bias-variance trade-off below. 
-</p>
 
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -464,7 +412,7 @@ This means the variance we obtain with the standard OLS will always for \( \lamb
   <li><a href="._mlnuclear-bs055.html">56</a></li>
   <li><a href="._mlnuclear-bs056.html">57</a></li>
   <li><a href="">...</a></li>
-  <li><a href="._mlnuclear-bs063.html">64</a></li>
+  <li><a href="._mlnuclear-bs065.html">66</a></li>
   <li><a href="._mlnuclear-bs048.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

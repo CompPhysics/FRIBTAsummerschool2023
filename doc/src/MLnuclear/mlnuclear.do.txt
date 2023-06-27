@@ -720,10 +720,8 @@ BE(A) = a_0+a_1A+a_2A^{2/3}+a_3A^{-1/3}+a_4A^{-1},
 !et
 we have five predictors, that is the intercept, the $A$ dependent term, the $A^{2/3}$ term and the $A^{-1/3}$ and $A^{-1}$ terms.
 This gives $p=0,1,2,3,4$. Furthermore we have $n$ entries for each predictor. It means that our design matrix is a 
-$p\times n$ matrix $\bm{X}$.
+$n\times p$ matrix $\bm{X}$.
 
-Here the predictors are based on a model we have made. A popular data set which is widely encountered in ML applications is the
-so-called "credit card default data from Taiwan":"https://www.sciencedirect.com/science/article/pii/S0957417407006719?via%3Dihub". The data set contains data on $n=30000$ credit card holders with predictors like gender, marital status, age, profession, education, etc. In total there are $24$ such predictors or attributes leading to a design matrix of dimensionality $24 \times 30000$. This is however a classification problem and we will come back to it when we discuss Logistic Regression. 
 
 !eblock
 
@@ -963,10 +961,10 @@ display(DesignMatrix)
 With $\bm{\beta}\in {\mathbb{R}}^{p\times 1}$, it means that we will hereafter write our equations for the approximation as
 !bt
 \[
-\bm{\tilde{y}}= \bm{X}\bm{\beta},
+\bm{\tilde{y}}= \bm{X}\bm{\beta}.
 \]
 !et
-throughout these lectures. 
+This is our model.
 
 
 !split
@@ -991,19 +989,8 @@ C(\bm{\beta})=\frac{1}{n}\left\{\left(\bm{y}-\bm{X}\bm{\beta}\right)^T\left(\bm{
 \]
 !et
 This function is one possible way to define the so-called cost function.
-
-
-
-It is also common to define
-the function $C$ as
-
-!bt
-\[
-C(\bm{\beta})=\frac{1}{2n}\sum_{i=0}^{n-1}\left(y_i-\tilde{y}_i\right)^2,
-\]
-!et
-since when taking the first derivative with respect to the unknown parameters $\beta$, the factor of $2$ cancels out. 
 !eblock
+
 
 
 !split
@@ -1140,8 +1127,59 @@ ax.set_xlabel("$\lambda$")
 plt.show()
 
 
+!ec
+
+
+!split
+===== Does this make sense? =====
+
+
+!bc pycod
+# Note new design matrix
+X = np.zeros((len(A),1))
+X[:,0] = A
+!ec
+
+!bc pycod
+from sklearn.neural_network import MLPRegressor
+from sklearn.metrics import accuracy_score
+import seaborn as sns
+
+X_train = X
+Y_train = Energies
+n_hidden_neurons = 100
+epochs = 100
+# store models for later use
+eta_vals = np.logspace(-5, 1, 7)
+lmbd_vals = np.logspace(-5, 1, 7)
+# store the models for later use
+DNN_scikit = np.zeros((len(eta_vals), len(lmbd_vals)), dtype=object)
+train_accuracy = np.zeros((len(eta_vals), len(lmbd_vals)))
+sns.set()
+for i, eta in enumerate(eta_vals):
+    for j, lmbd in enumerate(lmbd_vals):
+        dnn = MLPRegressor(hidden_layer_sizes=(n_hidden_neurons), activation='logistic',
+                            alpha=lmbd, learning_rate_init=eta, max_iter=epochs)
+        dnn.fit(X_train, Y_train)
+        DNN_scikit[i][j] = dnn
+        train_accuracy[i][j] = dnn.score(X_train, Y_train)
+
+fig, ax = plt.subplots(figsize = (10, 10))
+sns.heatmap(train_accuracy, annot=True, ax=ax, cmap="viridis")
+ax.set_title("Training Accuracy")
+ax.set_ylabel("$\eta$")
+ax.set_xlabel("$\lambda$")
+plt.show()
 
 !ec
+
+
+
+!split
+=====  How do we related say linear regression to Bayesian analysis? =====
+
+_Exercise:_ Replace standard linear regression with "scikit-learn's Gaussian process Kernel Regression":"https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html#sklearn.gaussian_process.GaussianProcessRegressor"
+
 
 
 !split
