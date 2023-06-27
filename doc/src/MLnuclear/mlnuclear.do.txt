@@ -338,7 +338,7 @@ FIGURE: [figures/examples_raw.png, width=500 frac=0.6]
 !split
 ===== Quantum Monte Carlo and deep learning =====
 !bblock
-Given a hamiltonian $H$ and a trial wave function $\Psi_T$, the variational principle states that the expectation value of $\langle H \rangle$, defined through 
+Given a Hamiltonian $H$ and a trial wave function $\Psi_T$, the variational principle states that the expectation value of $\langle H \rangle$, defined through 
 !bt
 \[
    \langle E \rangle =
@@ -382,39 +382,22 @@ neutron-neutron scattering length
 
 
 
-!split
-===== Deep learning neural networks, "Variational Monte Carlo calculations of $A\le 4$ nuclei with an artificial neural-network correlator ansatz by Adams et al.":"https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.022502" =====
-
-
-An appealing feature of the neural network ansatz is that it is more general than the more conventional product of two-
-and three-body spin-independent Jastrow functions
-!bt
-\begin{align}
-|\Psi_V^J \rangle = \prod_{i<j<k} \Big( 1-\sum_{\text{cyc}} u(r_{ij}) u(r_{jk})\Big) \prod_{i<j} f(r_{ij}) | \Phi\rangle\,,
-\end{align}
-!et
-which is commonly used for nuclear Hamiltonians that do not contain tensor and spin-orbit terms.
-The above function is replaced by a four-layer Neural Network. 
-
-FIGURE: [figures/energyconvergence.pdf, width=700 frac=0.9]
-
-
-
 
 !split
-===== The electron gas in three dimensions with $N=14$ electrons (Wigner-Seitz radius $r_s=2$ Ry) =====
-Jane Kim, Bryce Fore, Alessandro Lovato and MHJ, in preparation
+===== "Dilute neutron star matter from neural-network quantum states arXiv:2212.04436":"https://doi.org/10.48550/arXiv.2212.04436" =====
+Bryce Fore, Jane M. Kim, Giuseppe Carleo, MHJ, Alessandro Lovato
 !bblock
-FIGURE: [figures/elgasnew.png, width=700 frac=0.9]
+FIGURE: [figures/nmatter.pdf, width=700 frac=0.9]
 !eblock
 
 
+
 !split
-===== Neutron matter with $N=14$ neutron =====
-Jane Kim, Bryce Fore, Alessandro Lovato and MHJ, in preparation
-!bblock
-FIGURE: [figures/nmatter.png, width=700 frac=0.9]
-!eblock
+===== Other recent works =====
+
+o _Efficient solutions of fermionic systems using artificial neural networks_, E. Nordhagen, Jane Kim, Bryce Fore, Alessandro Lovato, and MHJ,  "Frontiers in Physics, Volume 11 - 2023":"https://doi.org/10.3389/fphy.2023.1061580"
+o _Neural-network quantum states for ultra-cold Fermi gases_,  Jane Kim, Gabriel Pescia, Bryce Fore, Jannes Nys, Giuseppe Carleo, Stefano Gandolfi, MHJ, Alessandro Lovato, "arXiv:2305.08831":"https://doi.org/10.48550/arXiv.2305.08831"
+o _Message-Passing Neural Quantum States for the Homogeneous Electron Gas_, Gabriel Pescia, Jannes Nys, Jane Kim, Alessandro Lovato, Giuseppe Carleo, "arXiv:2305.07240":"https://doi.org/10.48550/arXiv.2305.07240"
 
 
 !split
@@ -428,42 +411,6 @@ Or perhaps you consider that correlations represent some kind of symmetric state
 if $A$ is correlated with $B$, then $B$ is correlated with
 $A$. Causation on the other hand is directional, that is if $A$ causes $B$, $B$ does not
 necessarily cause $A$.
-
-
-!split
-===== Physics based statistical learning and data analysis =====
-
-The above concepts are in some sense the difference between _old-fashioned_ machine
-learning and statistics and Bayesian learning. In machine learning and prediction based
-tasks, we are often interested in developing algorithms that are
-capable of learning patterns from given data in an automated fashion,
-and then using these learned patterns to make predictions or
-assessments of newly given data. In many cases, our primary concern
-is the quality of the predictions or assessments, and we are less
-concerned about the underlying patterns that were learned in order
-to make these predictions.
-
-Physics based statistical learning points however to approaches that give us both predictions and correlations as well as being able to produce error estimates and understand causations.  This leads us to the very interesting field of Bayesian statistics.
-
-
-
-!split
-===== Bayes' Theorem =====
-
-Bayes' theorem
-!bt
-\[
-p(X\vert Y)= \frac{p(X,Y)}{\sum_{i=0}^{n-1}p(Y\vert X=x_i)p(x_i)}=\frac{p(Y\vert X)p(X)}{\sum_{i=0}^{n-1}p(Y\vert X=x_i)p(x_i)}.
-\]
-!et
-
-
-The quantity $p(Y\vert X)$ on the right-hand side of the theorem is
-evaluated for the observed data $Y$ and can be viewed as a function of
-the parameter space represented by $X$. This function is not
-necessarily normalized and is normally called the likelihood function.
-
-The function $p(X)$ on the right hand side is called the prior while the function on the left hand side is the called the posterior probability. The denominator on the right hand side serves as a normalization factor for the posterior distribution.
 
 
 
